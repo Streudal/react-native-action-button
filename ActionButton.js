@@ -43,7 +43,7 @@ export default class ActionButton extends Component {
     if (nextProps.resetToken !== this.state.resetToken) {
       if (nextProps.active === false && this.state.active === true) {
         if (this.props.onReset) this.props.onReset();
-        Animated.spring(this.anim, { toValue: 0 }).start();
+        Animated.spring(this.anim, { toValue: 0, useNativeDriver: false }).start();
         setTimeout(
           () =>
             this.setState({ active: false, resetToken: nextProps.resetToken }),
@@ -53,7 +53,7 @@ export default class ActionButton extends Component {
       }
 
       if (nextProps.active === true && this.state.active === false) {
-        Animated.spring(this.anim, { toValue: 1 }).start();
+        Animated.spring(this.anim, { toValue: 1, useNativeDriver: false }).start();
         this.setState({ active: true, resetToken: nextProps.resetToken });
         return;
       }
