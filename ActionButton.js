@@ -316,7 +316,7 @@ export default class ActionButton extends Component {
     if (this.state.active) return this.reset();
 
     if (animate) {
-      Animated.spring(this.anim, { toValue: 1 }).start();
+      Animated.spring(this.anim, { toValue: 1, useNativeDriver: false }).start();
     } else {
       this.anim.setValue(1);
     }
@@ -328,7 +328,7 @@ export default class ActionButton extends Component {
     if (this.props.onReset) this.props.onReset();
 
     if (animate) {
-      Animated.spring(this.anim, { toValue: 0 }).start();
+      Animated.spring(this.anim, { toValue: 0, useNativeDriver: false }).start();
     } else {
       this.anim.setValue(0);
     }
